@@ -3,40 +3,40 @@
 ## Pitch
 [Project Alder] is a coop action horror FPS, where the player(s) must survive an apocalypse of creepy animatronics.
 
-##Development
+## Development
 	- Environments
-		- Locations
-			- Museum
-			- Theme Park
-			- Animatronics Corp
-			- Comic Convention Center
-			- Pizzeria
-		- Traps
-			- Animatronic hidden in air duct
-			- Animatronic hidden in plain view
-				- Toys on shelfs
-				- Exhibits in Museum		
+	  - Locations
+		- Museum
+		- Theme Park
+		- Animatronics Corp
+		- Comic Convention Center
+		- Pizzeria
+	  - Traps
+		- Animatronic hidden in air duct
+		- Animatronic hidden in plain view
+		  - Toys on shelfs
+		  - Exhibits in Museum		
 	- Mechanics
-		- Stealth
-		- FPS
+	  - Stealth
+	  - FPS
 	- Enemies
-		- Animatronics
-			- Common
-			- Themed
-			- Special
-			- Boss
+	  - Animatronics
+		- Common
+		- Themed
+		- Special
+		- Boss
 	- Multiplayer
-		- Co-op
-			- P2P
+	  - Co-op
+		- P2P
 	- Items
-		- Health Packs
+	  - Health Packs
 	- Weapons
-		- Pistol
-		- Shotgun
-		- Taser
-		- Baseball bat
-		- Assault rifle
-		- Coil rifle (shoots electricity)
+	  - Pistol
+	  - Shotgun
+	  - Taser
+	  - Baseball bat
+	  - Assault rifle
+	  - Coil rifle (shoots electricity)
 	- Characters
-		- Players
-        - Extras
+	  - Players
+	  - Extras
