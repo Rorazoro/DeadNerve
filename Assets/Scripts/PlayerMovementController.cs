@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[AddComponentMenu("Player Movement/Movement Controller")]
 public class PlayerMovementController : MonoBehaviour {
 
 	// Use this for initialization
