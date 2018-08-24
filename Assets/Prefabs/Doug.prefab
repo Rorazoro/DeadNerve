@@ -106,6 +106,9 @@ GameObject:
   - component: {fileID: 114943945107317366}
   - component: {fileID: 114850182784295212}
   - component: {fileID: 114906547778521316}
+  - component: {fileID: 114590911188945968}
+  - component: {fileID: 114149686447170002}
+  - component: {fileID: 114259196313397758}
   m_Layer: 0
   m_Name: Doug
   m_TagString: Untagged
@@ -354,6 +357,62 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406202988980476}
   m_Enabled: 1
+--- !u!114 &114149686447170002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857250491805068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 2
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 10
+  m_InterpolateMovement: 1
+--- !u!114 &114259196313397758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857250491805068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4347042094373060}
+  m_ChildIndex: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 4
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0
+--- !u!114 &114590911188945968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857250491805068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d25bdebf42c94c44abd557a9d089880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabledComponents:
+  - {fileID: 114943945107317366}
+  - {fileID: 114850182784295212}
+  - {fileID: 20886785623641484}
+  - {fileID: 81152891996533146}
 --- !u!114 &114850182784295212
 MonoBehaviour:
   m_ObjectHideFlags: 1
