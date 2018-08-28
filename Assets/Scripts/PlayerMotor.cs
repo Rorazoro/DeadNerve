@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [AddComponentMenu("Player/Player Motor")]
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMotor : MonoBehaviour {
 
 	[SerializeField]
 	private Camera cam;
 
 	private Vector3 _velocity = Vector3.zero;
-	private Vector3 _rotation = Vector3.zero;
+	private Quaternion _rotation;
 	private Vector3 _cameraRotation = Vector3.zero;
 
-	private Rigidbody rb;
+	private CharacterController _controller;
+	public CharacterController CharController { get { return _controller; }}
 
 	/// <summary>
 	/// Start is called on the frame when a script is enabled just before
@@ -21,13 +22,13 @@ public class PlayerMotor : MonoBehaviour {
 	/// </summary>
 	void Start()
 	{
-		rb = GetComponent<Rigidbody>();	
+		_controller = GetComponent<CharacterController>();
 	}
 
 	/// <summary>
 	/// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
 	/// </summary>
-	void FixedUpdate()
+	void Update()
 	{
 		PerformMovement();
 		PerformRotation();
@@ -37,7 +38,7 @@ public class PlayerMotor : MonoBehaviour {
 		_velocity = velocity;
 	}
 
-	public void Rotate(Vector3 rotation) {
+	public void Rotate(Quaternion rotation) {
 		_rotation = rotation;
 	}
 
@@ -47,14 +48,15 @@ public class PlayerMotor : MonoBehaviour {
 
 	private void PerformMovement() {
 		if (_velocity != Vector3.zero) {
-			rb.MovePosition(rb.position + _velocity * Time.fixedDeltaTime);
+			_controller.Move(_velocity * Time.deltaTime);
 		}
 	}
 
 	private void PerformRotation() {
-		rb.MoveRotation(rb.rotation * Quaternion.Euler(_rotation));
-		if (cam != null) {
-			cam.transform.Rotate(-_cameraRotation);
-		}
+		//rb.MoveRotation(rb.rotation * Quaternion.Euler(_rotation));
+		_controller.transform.localRotation = _rotation;
+		// if (cam != null) {
+		// 	cam.transform.Rotate(-_cameraRotation);
+		// }
 	}
 }

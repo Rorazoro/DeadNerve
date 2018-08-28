@@ -1,7 +1,7 @@
-# Project Alder
+# Dead Nerve
 
 ## Pitch
-[Project Alder] is a coop action horror FPS, where the player(s) must survive an apocalypse of creepy animatronics.
+Dead Nerve is a coop action horror FPS, where the player(s) must survive an apocalypse of creepy animatronics.
 
 ## Development
 	- Environments
