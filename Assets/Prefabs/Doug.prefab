@@ -410,10 +410,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  lookSensitivity: 1
+  lookSensitivity: 5
   jumpSpeed: 8
-  gravity: 10
-  _velocity: {x: 0, y: 0, z: 0}
+  gravity: 20
 --- !u!114 &114906547778521316
 MonoBehaviour:
   m_ObjectHideFlags: 1
