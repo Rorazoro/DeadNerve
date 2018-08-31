@@ -7,6 +7,11 @@ using UnityEngine.Networking;
 public class PlayerSetup : NetworkBehaviour {
 	[SerializeField]
 	Behaviour[] disabledComponents;
+	[SerializeField]
+	string remoteLayerName = "RemotePlayer";
+	[SerializeField]
+	GameObject playerUIPrefab;
+	private GameObject playerUIInstance;
 
 	Camera sceneCamera;
 
@@ -17,16 +22,16 @@ public class PlayerSetup : NetworkBehaviour {
 	void Start()
 	{
 		if (!isLocalPlayer) {
-			foreach (Behaviour b in disabledComponents)
-			{
-				b.enabled = false;
-			}
+			DisableComponents();
 		}
 		else {
 			sceneCamera = Camera.main;
 			if (sceneCamera != null) {
 				sceneCamera.gameObject.SetActive(false);
 			}
+
+			playerUIInstance = Instantiate(playerUIPrefab);
+			playerUIInstance.name = playerUIPrefab.name;
 		}
 	}
 
@@ -35,8 +40,21 @@ public class PlayerSetup : NetworkBehaviour {
 	/// </summary>
 	void OnDisable()
 	{
+		Destroy(playerUIInstance);
+
 		if (sceneCamera != null) {
 			sceneCamera.gameObject.SetActive(true);
 		}
+	}
+	
+	private void DisableComponents() {
+		foreach (Behaviour b in disabledComponents)
+			{
+				b.enabled = false;
+			}
+	}
+
+	private void AssignRemoteLayer() {
+		gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
 	}
 }

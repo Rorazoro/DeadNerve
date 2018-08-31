@@ -109,9 +109,10 @@ GameObject:
   - component: {fileID: 114590911188945968}
   - component: {fileID: 114149686447170002}
   - component: {fileID: 114259196313397758}
+  - component: {fileID: 114427385696812658}
   m_Layer: 0
   m_Name: Doug
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,6 +383,25 @@ MonoBehaviour:
   m_MovementThreshold: 0.001
   m_InterpolateRotation: 0.5
   m_InterpolateMovement: 0
+--- !u!114 &114427385696812658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857250491805068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e911a349ec68b44917ce34eec90d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon:
+    Name: Pistol
+    damage: 10
+    range: 100
+  cam: {fileID: 20886785623641484}
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &114590911188945968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,6 +418,8 @@ MonoBehaviour:
   - {fileID: 114850182784295212}
   - {fileID: 20886785623641484}
   - {fileID: 81152891996533146}
+  playerUIPrefab: {fileID: 1352814305396992, guid: 6b0e66b860ebed845bb4470f7bb50edf,
+    type: 2}
 --- !u!114 &114850182784295212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,7 +431,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c62da2e24b09b4baca41895ce188c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  walkSpeed: 5
+  sprintSpeed: 8
+  crouchSpeed: 3
   lookSensitivity: 5
   jumpSpeed: 8
   gravity: 20
