@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [AddComponentMenu("Player/Player Shoot")]
-public class PlayerShoot : MonoBehaviour {
+public class PlayerShoot : NetworkBehaviour {
 
 	public Weapon weapon;
 
@@ -34,10 +35,18 @@ public class PlayerShoot : MonoBehaviour {
 		}
 	}
 
+	[Client]
 	private void Shoot() {
 		RaycastHit hit;
 		if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask)) {
-			Debug.Log("We hit " + hit.collider.name);
+			if (hit.collider.tag == "Player") {
+				CmdPlayerShot(hit.collider.name);
+			}
 		}
+	}
+
+	[Command]
+	private void CmdPlayerShot(string ID) {
+		Debug.Log(ID + " has been shot.");
 	}
 }

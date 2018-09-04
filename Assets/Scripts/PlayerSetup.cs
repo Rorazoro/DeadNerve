@@ -33,6 +33,8 @@ public class PlayerSetup : NetworkBehaviour {
 			playerUIInstance = Instantiate(playerUIPrefab);
 			playerUIInstance.name = playerUIPrefab.name;
 		}
+
+		RegisterPlayer();
 	}
 
 	/// <summary>
@@ -56,5 +58,10 @@ public class PlayerSetup : NetworkBehaviour {
 
 	private void AssignRemoteLayer() {
 		gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
+	}
+
+	private void RegisterPlayer() {
+		string ID = "Player " + GetComponent<NetworkIdentity>().netId;
+		transform.name = ID;
 	}
 }
