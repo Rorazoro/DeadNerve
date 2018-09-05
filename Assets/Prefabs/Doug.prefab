@@ -103,13 +103,13 @@ GameObject:
   - component: {fileID: 4397522676151856}
   - component: {fileID: 135819175665771626}
   - component: {fileID: 143809928166114554}
+  - component: {fileID: 114590911188945968}
   - component: {fileID: 114943945107317366}
   - component: {fileID: 114850182784295212}
+  - component: {fileID: 114427385696812658}
   - component: {fileID: 114906547778521316}
-  - component: {fileID: 114590911188945968}
   - component: {fileID: 114149686447170002}
   - component: {fileID: 114259196313397758}
-  - component: {fileID: 114427385696812658}
   m_Layer: 8
   m_Name: Doug
   m_TagString: Player
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
   m_InterpolateRotation: 10
-  m_InterpolateMovement: 2
+  m_InterpolateMovement: 0.5
 --- !u!114 &114259196313397758
 MonoBehaviour:
   m_ObjectHideFlags: 1

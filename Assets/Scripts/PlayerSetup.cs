@@ -23,6 +23,7 @@ public class PlayerSetup : NetworkBehaviour {
 	{
 		if (!isLocalPlayer) {
 			DisableComponents();
+			AssignRemoteLayer();
 		}
 		else {
 			sceneCamera = Camera.main;
