@@ -363,7 +363,7 @@ MonoBehaviour:
   m_VelocityThreshold: 0.0001
   m_SnapThreshold: 5
   m_InterpolateRotation: 10
-  m_InterpolateMovement: 0.5
+  m_InterpolateMovement: 1
 --- !u!114 &114259196313397758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -378,10 +378,10 @@ MonoBehaviour:
   m_Target: {fileID: 4347042094373060}
   m_ChildIndex: 0
   m_SendInterval: 0.1
-  m_SyncRotationAxis: 4
+  m_SyncRotationAxis: 1
   m_RotationSyncCompression: 0
   m_MovementThreshold: 0.001
-  m_InterpolateRotation: 0.5
+  m_InterpolateRotation: 0.3
   m_InterpolateMovement: 0
 --- !u!114 &114427385696812658
 MonoBehaviour:
