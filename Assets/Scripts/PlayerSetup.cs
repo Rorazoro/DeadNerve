@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -35,6 +36,8 @@ public class PlayerSetup : NetworkBehaviour {
 			playerUIInstance = Instantiate(playerUIPrefab);
 			playerUIInstance.name = playerUIPrefab.name;
 		}
+
+		GetComponent<Player>().Setup();
 	}
 
 	/// <summary>
@@ -61,10 +64,7 @@ public class PlayerSetup : NetworkBehaviour {
 	}
 
 	private void DisableComponents() {
-		foreach (Behaviour b in disabledComponents)
-			{
-				b.enabled = false;
-			}
+		disabledComponents.ToList().ForEach(x => x.enabled = false);
 	}
 
 	private void AssignRemoteLayer() {
