@@ -1,16 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Player : MonoBehaviour {
+public class Player : NetworkBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	[SerializeField]
+	private int maxHealth = 100;
+	[SerializeField][SyncVar]
+	private int currentHealth;
+
+	/// <summary>
+	/// Awake is called when the script instance is being loaded.
+	/// </summary>
+	void Awake()
+	{
+		SetDefaults();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public void SetDefaults() {
+		currentHealth = maxHealth;
+	}
+
+	public void TakeDamage(int amount) {
+		currentHealth -= amount;
+		Debug.Log(transform.transform.name + " now has " + currentHealth + " health.");
 	}
 }

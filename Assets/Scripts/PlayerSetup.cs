@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 [AddComponentMenu("Player/Player Setup")]
+[RequireComponent(typeof(Player))]
 public class PlayerSetup : NetworkBehaviour {
 	[SerializeField]
 	Behaviour[] disabledComponents;
@@ -34,8 +35,6 @@ public class PlayerSetup : NetworkBehaviour {
 			playerUIInstance = Instantiate(playerUIPrefab);
 			playerUIInstance.name = playerUIPrefab.name;
 		}
-
-		RegisterPlayer();
 	}
 
 	/// <summary>
@@ -48,8 +47,19 @@ public class PlayerSetup : NetworkBehaviour {
 		if (sceneCamera != null) {
 			sceneCamera.gameObject.SetActive(true);
 		}
+
+		GameManager.UnRegisterPlayer(transform.name);
 	}
-	
+
+	public override void OnStartClient() {
+		base.OnStartClient();
+
+		string netID = GetComponent<NetworkIdentity>().netId.ToString();
+		Player player = GetComponent<Player>();
+
+		GameManager.RegisterPlayer(netID, player);
+	}
+
 	private void DisableComponents() {
 		foreach (Behaviour b in disabledComponents)
 			{
@@ -59,10 +69,5 @@ public class PlayerSetup : NetworkBehaviour {
 
 	private void AssignRemoteLayer() {
 		gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
-	}
-
-	private void RegisterPlayer() {
-		string ID = "Player " + GetComponent<NetworkIdentity>().netId;
-		transform.name = ID;
 	}
 }
