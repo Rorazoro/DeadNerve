@@ -31,6 +31,16 @@ public class Player : NetworkBehaviour {
 		SetDefaults();
 	}
 
+	private IEnumerator Respawn() {
+		yield return new WaitForSeconds(GameManager.instance.hostSettings.respawnTime);
+		SetDefaults();
+		Transform spawnPoint = NetworkManager.singleton.GetStartPosition();
+		transform.position = spawnPoint.position;
+		transform.rotation = spawnPoint.rotation;
+
+		Debug.Log(transform.name + " respawned.");
+	}
+
 	public void SetDefaults() {
 		IsDead = false;
 		currentHealth = maxHealth;
@@ -52,5 +62,6 @@ public class Player : NetworkBehaviour {
 		IsDead = true;
 		DisableOnDeath.ToList().ForEach(x => x.enabled = false);
 		Debug.Log(transform.name + " is DEAD!");
+		StartCoroutine(Respawn());
 	}
 }

@@ -355,6 +355,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b55fec5a0461da4c88b096fa017ea2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  DisableOnDeath:
+  - {fileID: 114850182784295212}
+  - {fileID: 114427385696812658}
 --- !u!114 &114149686447170002
 MonoBehaviour:
   m_ObjectHideFlags: 1
