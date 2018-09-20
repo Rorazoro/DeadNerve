@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4534555054688350}
   - component: {fileID: 135195955532782846}
-  - component: {fileID: 135255973292355334}
   - component: {fileID: 143189629759685054}
   - component: {fileID: 195495914845956934}
   - component: {fileID: 114231998135375214}
+  - component: {fileID: 114564422642772796}
   - component: {fileID: 114191419321686386}
   - component: {fileID: 114347410082467820}
   - component: {fileID: 114723548209318792}
@@ -177,6 +177,20 @@ MonoBehaviour:
     i15: 150
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &114564422642772796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068018252943770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb7f6aec82d476a41810a0c60f37941a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldOfViewAngle: 110
+  playerInSight: 0
+  playerLastSighting: {x: 0, y: 0, z: 0}
 --- !u!114 &114723548209318792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,19 +222,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135255973292355334
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1068018252943770}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &143189629759685054
 CharacterController:

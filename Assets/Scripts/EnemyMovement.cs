@@ -14,7 +14,7 @@ public class EnemyMovement : NetworkBehaviour {
 	void Awake()
 	{
         enemy = GetComponent<Enemy>();
-		enemy.Target = GameObject.FindGameObjectWithTag("Player") != null ? GameObject.FindGameObjectWithTag("Player").transform : null;
+		//enemy.Target = GameObject.FindGameObjectWithTag("Player") != null ? GameObject.FindGameObjectWithTag("Player").transform : null;
 		Nav = GetComponent<NavMeshAgent>();
 	}
 
@@ -26,8 +26,8 @@ public class EnemyMovement : NetworkBehaviour {
 		if (enemy.Target != null) {
 			Nav.SetDestination(enemy.Target.position);
 		}
-		else {
-			enemy.Target = GameObject.FindGameObjectWithTag("Player") != null ? GameObject.FindGameObjectWithTag("Player").transform : null;
-		}
+		// else {
+		// 	enemy.Target = GameObject.FindGameObjectWithTag("Player") != null ? GameObject.FindGameObjectWithTag("Player").transform : null;
+		// }
 	}
 }
