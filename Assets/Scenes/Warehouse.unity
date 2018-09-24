@@ -613,6 +613,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114564422642772796, guid: 2f1b17126b656f84f8158beaf045c596,
+        type: 2}
+      propertyPath: viewRadius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114564422642772796, guid: 2f1b17126b656f84f8158beaf045c596,
+        type: 2}
+      propertyPath: viewAngle
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f1b17126b656f84f8158beaf045c596, type: 2}
   m_IsPrefabAsset: 0
