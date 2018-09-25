@@ -188,9 +188,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7f6aec82d476a41810a0c60f37941a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldOfViewAngle: 110
-  playerInSight: 0
-  playerLastSighting: {x: 0, y: 0, z: 0}
+  viewRadius: 15
+  viewAngle: 120
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 768
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  visibleTargets: []
 --- !u!114 &114723548209318792
 MonoBehaviour:
   m_ObjectHideFlags: 1
