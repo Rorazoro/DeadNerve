@@ -39,8 +39,9 @@ public class PlayerShoot : NetworkBehaviour {
 	private void Shoot() {
 		RaycastHit hit;
 		if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.range, mask)) {
-			if (hit.collider.tag == "Player") {
-				CmdPlayerShot(hit.collider.name, weapon.damage);
+			if (hit.collider.tag == "Enemy") {
+				//CmdPlayerShot(hit.collider.name, weapon.damage);
+				CmdEnemyShot(hit.collider.name, weapon.damage);
 			}
 		}
 	}
@@ -51,5 +52,13 @@ public class PlayerShoot : NetworkBehaviour {
 
 		Player player = GameManager.GetPlayer(ID);
 		player.RpcTakeDamage(damage);
+	}
+
+	[Command]
+	private void CmdEnemyShot(string ID, int damage) {
+		Debug.Log(ID + " has been shot.");
+
+		Enemy enemy = GameManager.GetEnemy(ID);
+		enemy.RpcTakeDamage(damage);
 	}
 }

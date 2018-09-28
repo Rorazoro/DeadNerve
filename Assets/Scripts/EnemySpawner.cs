@@ -21,6 +21,10 @@ public class EnemySpawner : NetworkBehaviour {
                 0.0f);
 
             var enemy = (GameObject)Instantiate(enemyPrefab, spawnPosition, spawnRotation);
+            string netID = enemy.GetComponent<NetworkIdentity>().netId.ToString();
+		    Enemy enemyObject = enemy.GetComponent<Enemy>();
+
+		    GameManager.RegisterEnemy(netID, enemyObject);
             NetworkServer.Spawn(enemy);
         }
     }
