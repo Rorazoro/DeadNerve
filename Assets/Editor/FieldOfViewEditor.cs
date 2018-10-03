@@ -13,6 +13,7 @@ public class FieldOfViewEditor : Editor {
 		Vector3 viewingAngleA = sight.DirFromAngle(-sight.viewAngle / 2, false);
 		Vector3 viewingAngleB = sight.DirFromAngle(sight.viewAngle / 2, false);
 
+		Handles.color = Color.green;
 		Handles.DrawLine(sight.transform.position, sight.transform.position + viewingAngleA * sight.viewRadius);
 		Handles.DrawLine(sight.transform.position, sight.transform.position + viewingAngleB * sight.viewRadius);
 

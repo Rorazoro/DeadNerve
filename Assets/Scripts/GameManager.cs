@@ -37,4 +37,21 @@ public class GameManager : MonoBehaviour {
 			return players[playerID];
 		}
 	#endregion
+	#region Enemy Register
+		private static Dictionary<string, Enemy>  enemies = new Dictionary<string, Enemy>();
+
+		public static void RegisterEnemy (string netID, Enemy enemy) {
+			string enemyID = "Enemy " + netID;
+			enemies.Add(enemyID, enemy);
+			enemy.transform.name = enemyID;
+		}
+
+		public static void UnRegisterEnemy (string enemyID) {
+			enemies.Remove(enemyID);
+		}
+
+		public static Enemy GetEnemy (string enemyID) {
+			return enemies[enemyID];
+		}
+	#endregion
 }

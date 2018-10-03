@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 public class EnemyMovement : NetworkBehaviour {
     private Enemy enemy;
+	private EnemySight sight;
     private NavMeshAgent Nav;
 
 	/// <summary>
@@ -14,7 +15,7 @@ public class EnemyMovement : NetworkBehaviour {
 	void Awake()
 	{
         enemy = GetComponent<Enemy>();
-		//enemy.Target = GameObject.FindGameObjectWithTag("Player") != null ? GameObject.FindGameObjectWithTag("Player").transform : null;
+		sight = GetComponent<EnemySight>();
 		Nav = GetComponent<NavMeshAgent>();
 	}
 
@@ -26,8 +27,28 @@ public class EnemyMovement : NetworkBehaviour {
 		if (enemy.Target != null) {
 			Nav.SetDestination(enemy.Target.position);
 		}
-		// else {
-		// 	enemy.Target = GameObject.FindGameObjectWithTag("Player") != null ? GameObject.FindGameObjectWithTag("Player").transform : null;
-		// }
+		else {
+			if (sight.visibleTargets.Count > 0) {
+				enemy.Target = GetClosestTarget(sight.visibleTargets);
+			}
+			//enemy.Target = GameObject.FindGameObjectWithTag("Player") != null ? GameObject.FindGameObjectWithTag("Player").transform : null;
+		}
 	}
+
+	Transform GetClosestTarget(List<Transform> targets)
+    {
+        Transform tMin = null;
+        float minDist = Mathf.Infinity;
+        Vector3 currentPos = transform.position;
+        foreach (Transform t in targets)
+        {
+            float dist = Vector3.Distance(t.position, currentPos);
+            if (dist < minDist)
+            {
+                tMin = t;
+                minDist = dist;
+            }
+        }
+        return tMin;
+    }
 }

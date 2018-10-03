@@ -12,7 +12,7 @@ public class EnemySpawner : NetworkBehaviour {
         {
             var spawnPosition = new Vector3(
                 Random.Range(-8.0f, 8.0f),
-                1.0f,
+                2.0f,
                 Random.Range(-8.0f, 8.0f));
 
             var spawnRotation = Quaternion.Euler( 
@@ -21,6 +21,10 @@ public class EnemySpawner : NetworkBehaviour {
                 0.0f);
 
             var enemy = (GameObject)Instantiate(enemyPrefab, spawnPosition, spawnRotation);
+            string netID = enemy.GetComponent<NetworkIdentity>().netId.ToString();
+		    Enemy enemyObject = enemy.GetComponent<Enemy>();
+
+		    GameManager.RegisterEnemy(netID, enemyObject);
             NetworkServer.Spawn(enemy);
         }
     }

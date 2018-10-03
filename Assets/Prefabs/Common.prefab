@@ -27,9 +27,9 @@ GameObject:
   - component: {fileID: 114191419321686386}
   - component: {fileID: 114347410082467820}
   - component: {fileID: 114723548209318792}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Common
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4103714800332224}
   - component: {fileID: 33853332458856698}
   - component: {fileID: 23860925192713318}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,9 +188,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7f6aec82d476a41810a0c60f37941a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldOfViewAngle: 110
-  playerInSight: 0
-  playerLastSighting: {x: 0, y: 0, z: 0}
+  viewRadius: 15
+  viewAngle: 120
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 768
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  visibleTargets: []
 --- !u!114 &114723548209318792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 0
+  m_TransformSyncMode: 4
   m_SendInterval: 0.1
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
