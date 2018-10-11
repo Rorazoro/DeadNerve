@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour {
 	#region Enemy Register
 		private static Dictionary<string, Enemy>  enemies = new Dictionary<string, Enemy>();
 
-		public static void RegisterEnemy (string netID, Enemy enemy) {
-			string enemyID = "Enemy " + netID;
+		public static void RegisterEnemy (string ID, Enemy enemy) {
+			string enemyID = "Enemy " + ID;
 			enemies.Add(enemyID, enemy);
 			enemy.transform.name = enemyID;
 		}
