@@ -19,6 +19,7 @@ public class Enemy : NetworkBehaviour {
 
 	[SerializeField]
 	public Transform Target;
+	public EnemySpawner spawner;
 
 	private void Awake() {
 		SetDefaults();
@@ -40,6 +41,7 @@ public class Enemy : NetworkBehaviour {
 	private void Die() {
 		IsDead = true;
 		Debug.Log(transform.name + " is DEAD!");
+		spawner.currentNumberOfEnemies--;
 		Destroy(gameObject);
 	}
 }

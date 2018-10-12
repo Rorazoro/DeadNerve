@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -6,42 +7,45 @@ using UnityEngine.Networking;
 public class EnemySpawner : NetworkBehaviour {
 
     public GameObject enemyPrefab;
-    public int numberOfEnemies;
-   
-    private Timer spawnTimer;
+    public int maxNumberOfEnemies;
+    public int currentNumberOfEnemies;
+    public float spawnInterval;
+
+    private float nextSpawnTime; 
     
     public override void OnStartServer()
     {
-        spawnTimer = new Timer(3000);
-        spawnTimer.Elapsed += OnTimedEvent;
-        spawnTimer.AutoReset = true;
-        spawnTimer.Enabled = true;
-    }
-
-    private static void OnTimedEvent(Object source, ElapsedEventArgs e)
-    {
-
-    }
-
-    public void SpawnEnemies(bool spawnAll) {
-        for (int i=0; i < numberOfEnemies; i++)
+        nextSpawnTime = Time.time + spawnInterval;
+        for (int i=0; i < maxNumberOfEnemies; i++)
         {
-            var spawnPosition = new Vector3(
-                Random.Range(-8.0f, 8.0f),
-                2.0f,
-                Random.Range(-8.0f, 8.0f));
-
-            var spawnRotation = Quaternion.Euler( 
-                0.0f, 
-                Random.Range(0,180), 
-                0.0f);
-
-            var enemy = (GameObject)Instantiate(enemyPrefab, spawnPosition, spawnRotation);
-            string ID = i.ToString();
-		    Enemy enemyObject = enemy.GetComponent<Enemy>();
-
-		    GameManager.RegisterEnemy(ID, enemyObject);
-            NetworkServer.Spawn(enemy);
+            SpawnEnemy();
         }
+    }
+
+    private void Update() {
+        if (nextSpawnTime < Time.time && currentNumberOfEnemies <= maxNumberOfEnemies) {
+            SpawnEnemy();
+        }
+    }
+
+    public void SpawnEnemy() {
+        var spawnPosition = new Vector3(
+            UnityEngine.Random.Range(-8.0f, 8.0f),
+            2.0f,
+            UnityEngine.Random.Range(-8.0f, 8.0f));
+
+        var spawnRotation = Quaternion.Euler( 
+            0.0f,
+            UnityEngine.Random.Range(0,180), 
+            0.0f);
+
+        var enemy = (GameObject)Instantiate(enemyPrefab, spawnPosition, spawnRotation);
+        Enemy enemyObject = enemy.GetComponent<Enemy>();
+        string netID = Guid.NewGuid().ToString();
+        enemyObject.spawner = this;
+
+        currentNumberOfEnemies++;
+        GameManager.RegisterEnemy(netID, enemyObject);
+        NetworkServer.Spawn(enemy);
     }
 }
