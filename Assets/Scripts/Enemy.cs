@@ -16,6 +16,8 @@ public class Enemy : NetworkBehaviour {
 	private int maxHealth = 100;
 	[SerializeField][SyncVar] 
 	private int currentHealth;
+	[SerializeField][SyncVar] 
+	public float Speed;
 
 	[SerializeField]
 	public Transform Target;
@@ -30,10 +32,17 @@ public class Enemy : NetworkBehaviour {
 		currentHealth = maxHealth;
 	}
 
+	public void Alert(Transform target) {
+		Target = target;
+	}
+
 	[ClientRpc]
-	public void RpcTakeDamage(int amount) {
+	public void RpcTakeDamage(int amount, Transform Shooter) {
 		currentHealth -= amount;
 		Debug.Log(transform.transform.name + " now has " + currentHealth + " health.");
+
+		Alert(Shooter);
+
 		if (currentHealth <= 0) {
 			Die();
 		}

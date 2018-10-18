@@ -617,6 +617,11 @@ Prefab:
       propertyPath: m_AssetId.i15
       value: 230
       objectReference: {fileID: 0}
+    - target: {fileID: 114953680517656162, guid: 28a4baa6df63d7044aa3a0a4d7686ee6,
+        type: 2}
+      propertyPath: maxNumberOfEnemies
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a4baa6df63d7044aa3a0a4d7686ee6, type: 2}
   m_IsPrefabAsset: 0

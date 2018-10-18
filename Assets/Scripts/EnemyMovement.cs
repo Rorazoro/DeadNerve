@@ -17,6 +17,7 @@ public class EnemyMovement : NetworkBehaviour {
         enemy = GetComponent<Enemy>();
 		sight = GetComponent<EnemySight>();
 		Nav = GetComponent<NavMeshAgent>();
+		Nav.speed = enemy.Speed;
 	}
 
     /// <summary>
